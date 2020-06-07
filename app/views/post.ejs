@@ -12,22 +12,18 @@
     <%- include ('./templates/menu') %> 
 
     <main role="main">
-
-      <section class="jumbotron text-center">
-        <div class="container">
-            <% if (postagem) { %>
+        <% if (postagem) { %>
+        <section class="jumbotron text-center">
+            <div class="container">
                 <%= postagem.title %> 
                 <%= postagem.date %>
-                <%= postagem.message %>
-              <% } %>
-        </div>
-      </section>
-
-    
-        
-       
-
-         
+                <hr>
+                <div class="form-group col-md-10 container">
+                    <p class="h5 text-justify"> <%= postagem.message %> </p> 
+                </div>
+            </div>
+        </section>
+        <% } %>
     </main>
     <%- include ('./templates/footer') %> 
   </body>
