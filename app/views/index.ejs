@@ -28,40 +28,18 @@
             <% for(var i = 0; i < postagens.length; i++){ %>
             <div class="col-md-4">
               <div class="card mb-4 shadow-sm">
-                <img src="<%= postagens[i].img %>">
+                <img src="/static/img/<%= postagens[i].img %>">
                    <div class="card-body">
                   <p class="card-text"> <%= postagens[i].title %> </p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                      <button class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#<%= postagens[i]._id %>">Ver</button>
+                      <a class="btn btn-sm btn-outline-secondary" href="/post/<%= postagens[i]._id %>" target="_blank" >Ver</a>
                     </div>
                     <small class="text-muted"><%= postagens[i].date %></small>
                   </div>
                 </div>
               </div>
             </div><!-- Modal -->
-            <div class="modal fade bd-example-modal-lg" id="<%= postagens[i]._id %>" tabindex="-1" role="dialog" aria-labelledby="ver" aria-hidden="true">
-              <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-                  <div class="modal-content" id="scopeModal">
-                      <div class="modal-header">
-                          <h5 class="modal-title" id="verTitle"><%= postagens[i].title %></h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                          </button>
-                      </div>
-                      <div class="modal-body">
-                        Publicado: <%= postagens[i].date %>
-                        <hr>
-                        <div class="form-group col-md-10 container">
-                          <p><%= postagens[i].message %> </p> 
-                        </div>
-                        <div class="form-group col-md-10 container">
-                          <button type="button" class="btn btn-primary form-control mt-2" data-dismiss="modal">Voltar</button>
-                        </div>
-                      </div>  
-                  </div>
-              </div>
-            </div>
             <% } %>
           <% } %>
           </div>

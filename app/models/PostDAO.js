@@ -19,6 +19,17 @@ class PostDAO {
         });
     }
 
+    searchId(id){
+        return new Promise((resolve, reject) => {
+            MongoClient.connect(this.url,(err,db) => {
+                var dbo = db.db('hclient');
+                dbo.collection('post').findOne({'_id':ObjectId(id)},function(err, resp){
+                    err ? reject(err) : resolve(resp);
+                }); 
+                db.close();
+            });
+        });
+    }
 
     insert(data){
         return new Promise((resolve, reject) => {

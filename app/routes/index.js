@@ -5,5 +5,4 @@ module.exports = (app) => {
     const indexRouts = IndexControll.routs();
         app.get(indexRouts.home, indexControll.home());
 
-
 };
