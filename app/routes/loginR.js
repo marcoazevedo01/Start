@@ -1,6 +1,6 @@
 const LoginControll = require('../controllers/login');
 const loginControll = new LoginControll();
-const ClientValit = require('../models/ClientValit');
+const ClientValit = require('../models/clientValit');
 
 
 module.exports = (app) => {
