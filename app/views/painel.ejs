@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="Verport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel='stylesheet' type='text/css' media='screen' href="/static/css/bootstrap.css">
+    <link rel='stylesheet' type='text/css' media='screen' href='/static/css/style.css'>
+    <title>example</title>
+  </head>
+
+  <body>
+    <%- include ('./templates/menu') %> 
+    <main class="bgMain01 pt-5 pb-5 pl-3 pr-3">
+      <div class="col-md-12">
+        <div class="col-md-10 container form-Global pb-3 pt-3 pl-5 pr-5">      
+          <div class="row">
+            <div class="col-md-6">
+              <h2 id="titulo-form">Postagens</h2>
+            </div>
+            <div class="col-md-6 d-flex justify-content-end">
+              <div class="col-md-2">
+                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#insert">Nova</button>
+              </div>
+            </div>
+          </div>
+          <div class="table-responsive maxHeightTable">
+            <table id="requests" class="table table-striped">
+              <thead>
+                <tr id="table">
+                  <th scope="col">Data</th>
+                  <th scope="col">Titulo</th>
+                  <th scope="col">Editar</th>
+                  <th scope="col">Excluir</th>
+                </tr>
+              </thead>
+              <tbody id="tbody">
+              <% if (postagens) { %>
+                <% for(var i = 0; i < postagens.length; i++){ %>
+                <tr id="<%= postagens[i]._id %>">             
+                    <td><%= postagens[i].date %></td>
+                    <td><%= postagens[i].title %></td>   
+                    <td><a href="/" class="btn btn-primary" data-type="edit">Editar</a></td>
+                    <td><a href="/painel/post/<%= postagens[i]._id %>" class="btn btn-danger" data-method="delete" data-type="remove">Remover</a></td>
+                </tr>
+                <% } %>
+              <% } %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <%- include ('./templates/form') %> 
+    </main>
+    <%- include ('./templates/footer') %> 
+
+  </body>
+</html>

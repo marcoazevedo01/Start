@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="Verport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel='stylesheet' type='text/css' media='screen' href="/static/css/bootstrap.css">
+    <link rel='stylesheet' type='text/css' media='screen' href='/static/css/style.css'>
+    <title>example</title>
+  </head>
+
+  <body>
+    <%- include ('./templates/menu') %> 
+
+    <main role="main">
+
+      <section class="jumbotron text-center">
+        <div class="container">
+          <h1>example</h1>
+          <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+        
+        </div>
+      </section>
+
+      <div class="album py-5 bg-white">
+        <div class="container">
+          <div class="row">
+          <% if (postagens) { %>
+            <% for(var i = 0; i < postagens.length; i++){ %>
+            <div class="col-md-4">
+              <div class="card mb-4 shadow-sm">
+                <img src="<%= postagens[i].img %>">
+                   <div class="card-body">
+                  <p class="card-text"> <%= postagens[i].title %> </p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#<%= postagens[i]._id %>">Ver</button>
+                    </div>
+                    <small class="text-muted"><%= postagens[i].date %></small>
+                  </div>
+                </div>
+              </div>
+            </div><!-- Modal -->
+            <div class="modal fade bd-example-modal-lg" id="<%= postagens[i]._id %>" tabindex="-1" role="dialog" aria-labelledby="ver" aria-hidden="true">
+              <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                  <div class="modal-content" id="scopeModal">
+                      <div class="modal-header">
+                          <h5 class="modal-title" id="verTitle"><%= postagens[i].title %></h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+                      <div class="modal-body">
+                        Publicado: <%= postagens[i].date %>
+                        <hr>
+                        <div class="form-group col-md-10 container">
+                          <p><%= postagens[i].message %> </p> 
+                        </div>
+                        <div class="form-group col-md-10 container">
+                          <button type="button" class="btn btn-primary form-control mt-2" data-dismiss="modal">Voltar</button>
+                        </div>
+                      </div>  
+                  </div>
+              </div>
+            </div>
+            <% } %>
+          <% } %>
+          </div>
+        </div>
+      </div>
+
+    </main>
+    <%- include ('./templates/footer') %> 
+  </body>
+</html>
