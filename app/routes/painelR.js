@@ -1,5 +1,6 @@
 const PainelControll = require('../controllers/painel');
 const painelControll = new PainelControll();
+const multer = require('../../config/upload');
 
 module.exports = (app) => {
     const painelRouts = PainelControll.routs();
@@ -13,12 +14,12 @@ module.exports = (app) => {
           resp.redirect('/login');
         }
     });
-
+   
     app.route(painelRouts.list)
         .get(painelControll.list())
-        .post(painelControll.insert())
+        .post(multer.single('image'),painelControll.insert())
         .put(painelControll.edit()) 
-
+   
     app.get(painelRouts.remove, painelControll.remove())
 
 };

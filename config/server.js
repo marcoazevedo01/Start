@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
+//app.use(upload.array());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 

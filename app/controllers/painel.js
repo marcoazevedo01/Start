@@ -12,7 +12,7 @@ class PainelControll {
     }
 
     list() {
-        return function(req, resp) {
+        return function(req, resp, next) {
             const postDao = new PostDAO(url); 
             postDao.list()
                 .then(postagens => resp.render('./painel',{postagens:postagens}))
@@ -22,17 +22,21 @@ class PainelControll {
 
     insert(){
         return function(req, resp) {
-            let date = new Date();
-            let data = {
-                'img':req.body.img,
-                'title':req.body.title,
-                'message':req.body.message,
-                'date': `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()} - ${date.getHours()}:${date.getMinutes()}`
+            if(req.file){
+                let date = new Date();
+                let data = {
+                    'img':req.file.filename,
+                    'title':req.body.title,
+                    'message':req.body.message,
+                    'date': `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()} - ${date.getHours()}:${date.getMinutes()}`
+                }
+     
+                const postDao = new PostDAO(url); 
+                postDao.insert(data)
+                    .then(suss => resp.redirect('./painel'))
+                    .catch(error => console.log(error)); 
             }
-            const postDao = new PostDAO(url); 
-            postDao.insert(data)
-                .then(suss => resp.redirect('./painel'))
-                .catch(error => console.log(error)); 
+            return resp.redirect('./painel');
         }
     }
 
