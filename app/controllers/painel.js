@@ -1,5 +1,6 @@
 const PostDAO = require('../models/PostDAO');
 const url = require('../../config/dbConnection');
+const filehelper = require('../../config/fileHelper');
 
 class PainelControll {
 
@@ -22,21 +23,28 @@ class PainelControll {
 
     insert(){
         return function(req, resp) {
+            const postDao = new PostDAO(url); 
             if(req.file){
+                filehelper.compressImage(req.file, 350)
+                    .then(newPath => montObj())
+                    .then(obj => postDao.insert(obj))   
+                    .then(suss => resp.redirect('./painel'))         
+                    .catch(err => console.log(err) );
+
+            }else{
+                 return resp.redirect('./painel');
+            }
+
+            function montObj(){
                 let date = new Date();
                 let data = {
-                    'img':req.file.filename,
+                    'img':req.file.filename.split('.')[0] + '.webp',
                     'title':req.body.title,
                     'message':req.body.message,
                     'date': `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()} - ${date.getHours()}:${date.getMinutes()}`
                 }
-     
-                const postDao = new PostDAO(url); 
-                postDao.insert(data)
-                    .then(suss => resp.redirect('./painel'))
-                    .catch(error => console.log(error)); 
+                return data;
             }
-            return resp.redirect('./painel');
         }
     }
 
