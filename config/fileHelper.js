@@ -7,14 +7,10 @@ exports.compressImage = (file, size) => {
     return sharp(file.path)
         .resize(size)
         .toFormat('webp')
-        .webp({
-            quality: 100
-        })
+        .webp({quality: 100})
         .toBuffer()
         .then(data => {
 
-            // Deletando o arquivo antigo
-            // O fs.acess serve para testar se o arquivo realmente existe, evitando bugs
             fs.access(file.path, (err) => {
 
                 // Um erro significa que a o arquivo não existe, então não tentamos apagar
