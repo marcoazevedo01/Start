@@ -7,8 +7,8 @@ class PainelControll {
     static routs() {
         return {
             authenticate: '/painel*',
-            list: '/painel/:id',
-            edit: '/painel/post/:id',
+            list: '/painel/client/:id',
+            post: '/painel/post/list/:id',
             remove: '/painel/post/remove/:id'
         };
     }
@@ -30,11 +30,11 @@ class PainelControll {
                 filehelper.compressImage(req.file, 350)
                     .then(newPath => montObj())
                     .then(obj => postDao.insert(obj))   
-                    .then(suss => resp.redirect('./painel'))         
+                    .then(suss => resp.redirect(`/painel/client/${req.user.clientId}`))   
                     .catch(err => console.log(err) );
 
             }else{
-                 return resp.redirect('./painel');
+                 return resp.redirect(`/painel/client/${req.user.clientId}`);
             }
 
             function montObj(){
@@ -52,10 +52,11 @@ class PainelControll {
 
     formEdit(){
         return function(req, resp) {
+            console.log('editt');
             let id = req.params.id;
             const postDao = new PostDAO(url); 
             postDao.searchId(id)
-                .then(dados => resp.render('./templates/form',{dados:dados}))
+                .then(dados => resp.json(dados))
                 .catch(error => console.log(error))
             
         }
@@ -64,16 +65,15 @@ class PainelControll {
     edit(){
         return function(req, resp) {
             console.log('entrou no edit');
+            let id = req.body;
+            console.log(id);
             const postDao = new PostDAO(url); 
             if(req.file){
-                filehelper.compressImage(req.file, 350)
-                    .then(newPath => montObj())
-                    .then(obj => postDao.edit(obj))   
-                    .then(suss => resp.redirect('./painel'))         
-                    .catch(err => console.log(err) );
+                
+              
 
             }else{
-                 return resp.redirect('./painel');
+                 return resp.redirect(`/painel/client/${req.user.clientId}`)
             }
 
             function montObj(){
@@ -94,7 +94,7 @@ class PainelControll {
             let id = req.params.id;
             const postDao = new PostDAO(url); 
             postDao.delete(id)
-                .then(suss => resp.redirect(`/painel/${req.user.clientId}`))
+                .then(suss => resp.redirect(`/painel/client/${req.user.clientId}`))
                 .catch(error => console.log(error)); 
         }
     }

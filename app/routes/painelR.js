@@ -15,12 +15,13 @@ module.exports = (app) => {
     }
   });
 
-  app.route(painelRouts.list)
-    .get(painelControll.list())
-    //.post(multer.single('image'), painelControll.insert())
-    .put(painelControll.edit())
+  app.get(painelRouts.list,painelControll.list())
+    
+  app.route(painelRouts.post)
+    .get(painelControll.formEdit())
+    .post(multer.single('image'), painelControll.insert())
+    .put(multer.single('image'), painelControll.edit())
 
-  app.get(painelRouts.edit, painelControll.formEdit())
   app.get(painelRouts.remove, painelControll.remove())
     
 

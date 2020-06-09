@@ -29,7 +29,7 @@ class LoginControll {
                         return next(error);
                     }
                
-                    return resp.redirect(`/painel/${user._id}`);
+                    return resp.redirect(`/painel/client/${user._id}`);
                 });
             })(req, resp, next);
         };

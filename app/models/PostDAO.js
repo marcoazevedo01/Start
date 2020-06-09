@@ -43,11 +43,11 @@ class PostDAO {
         });
     }
 
-    edit(data){
+    edit(id,data){
         return new Promise((resolve, reject) => {
             MongoClient.connect(this.url,(err,db) => {
                 var dbo = db.db('hclient');
-                dbo.collection('post').updateOne(data,function(err, resp){
+                dbo.collection('post').updateOne({'_id':ObjectId(id)},{$set:data},function(err,resp){
                     err ? reject(err) : resolve(resp);
                 }); 
                 db.close();
