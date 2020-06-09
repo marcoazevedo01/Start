@@ -1,47 +1,56 @@
 <!doctype html>
 <html lang="pt-br">
-  <head>
-    <meta charset="utf-8">
-    <meta name="Verport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel='stylesheet' type='text/css' media='screen' href="/static/css/bootstrap.css">
-    <link rel='stylesheet' type='text/css' media='screen' href='/static/css/style.css'>
-    <title>example</title>
-  </head>
 
-  <body>
-    <%- include ('./templates/menu') %> 
-    <main class="pt-3 pb-5 pl-3 pr-3"> 
+<head>
+  <meta charset="utf-8">
+  <meta name="Verport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel='stylesheet' type='text/css' media='screen' href="/static/css/bootstrap.css">
+  <link rel='stylesheet' type='text/css' media='screen' href='/static/css/style.css'>
+  <title>example</title>
+</head>
+
+<body>
+  <%- include ('./templates/menu') %>
+  <main class="pt-3 pb-5 pl-3 pr-3">
+    <% if ((locals.info)||(locals.error)) { %>
+    <div id="alerts" class="alert alert-danger col-md-6 container" role="alert">
+      <% if (locals.info) { %>
+        <li><%= info.info %></li>
+      <% } %>
       <% if (locals.error) { %>
-        <div id="alerts" class="alert alert-danger col-md-6 container" role="alert">
         <% error.forEach(err =>{ %>
           <li><%= err.msg %></li>
         <% }); %>
-        </div>
       <% } %>
-      <div class="col-md-12">
-        <section id="login" class="col-md-6 container form-Global pt-3 pb-4 mt-5 mb-3">
-          <h1 class="text-danger text-center font-weight-bold mb-4">Efetuar Login</h1>
-          <form action="/login" method="post">
-            <div class="form-group col-md-10 container">
-              <input type="text" name="email" class="form-control" id="email" placeholder="Email" value="marco@gmail.com">
-            </div>
-            <div class="form-group col-md-10 container">
-              <input type="password" name="password" class="form-control" id="password" placeholder="Senha">
-            </div>  
-            <div class="form-group col-md-10 container">
-              <input type="submit" value="Entrar" id="sign" class="btn btn-primary form-control mt-2"/>
-            </div>
-          </form>
-          <div class="form-row">
-            <div class="form-group col-md-auto container text-center">
-              <a class="mt-2 cursor" onclick="window.open('/recover/password','REENVIO_SENHA','top=50,left=50,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no,width=475,height=365'); return false">Esqueci a senha</a>
-            </div>
+    </div>
+    <% } %>
+    <div class="col-md-12">
+      <section id="login" class="col-md-6 container form-Global pt-3 pb-4 mt-5 mb-3">
+        <h1 class="text-danger text-center font-weight-bold mb-4">Efetuar Login</h1>
+        <form action="/login" method="post">
+          <div class="form-group col-md-10 container">
+            <input type="text" name="email" class="form-control" id="email" placeholder="Email" value="marco@gmail.com">
           </div>
-        </section>
-      </div>
-    </main>
+          <div class="form-group col-md-10 container">
+            <input type="password" name="password" class="form-control" id="password" placeholder="Senha">
+          </div>
+          <div class="form-group col-md-10 container">
+            <input type="submit" value="Entrar" id="sign" class="btn btn-primary form-control mt-2" />
+          </div>
+        </form>
+        <div class="form-row">
+          <div class="form-group col-md-auto container text-center">
+            <a class="mt-2 cursor"
+              onclick="window.open('/recover/password','REENVIO_SENHA','top=50,left=50,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no,width=475,height=365'); return false">Esqueci
+              a senha</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
 
-    <%- include ('./templates/footer') %> 
+  <%- include ('./templates/footer') %>
 
-  </body>
+</body>
+
 </html>

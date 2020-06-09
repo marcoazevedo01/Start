@@ -39,8 +39,8 @@
                 <tr id="<%= postagens[i]._id %>">             
                     <td><%= postagens[i].date %></td>
                     <td><%= postagens[i].title %></td>   
-                    <td><a href="/" class="btn btn-primary" data-type="edit">Editar</a></td>
-                    <td><a href="/painel/post/<%= postagens[i]._id %>" class="btn btn-danger" data-method="delete" data-type="remove">Remover</a></td>
+                    <td><a href="/painel/post/<%= postagens[i]._id %>" class="btn btn-primary" data-type="edit">Editar</a></td>
+                    <td><a href="/painel/post/remove/<%= postagens[i]._id %>" class="btn btn-danger" data-method="delete" data-type="remove">Remover</a></td>
                 </tr>
                 <% } %>
               <% } %>
