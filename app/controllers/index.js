@@ -12,7 +12,7 @@ class IndexControll {
 
     home() {
         return function(req, resp) {
-            resp.render('./index',{postagens:postagens})  
+            resp.render('./index')  
         };
     }  
 

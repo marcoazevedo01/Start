@@ -1,5 +1,5 @@
 const fs = require('fs');
-const sharp = require('sharp');
+//const sharp = require('sharp');
 
 exports.compressImage = (file, size) => {
     const newPath = file.path.split('.')[0] + '.webp';
