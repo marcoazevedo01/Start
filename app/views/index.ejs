@@ -1,52 +1,98 @@
-<!doctype html>
-<html lang="pt-br">
-  <head>
-    <meta charset="utf-8">
-    <meta name="Verport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel='stylesheet' type='text/css' media='screen' href="/static/css/bootstrap.css">
-    <link rel='stylesheet' type='text/css' media='screen' href='/static/css/style.css'>
-    <title>example</title>
-  </head>
+<!DOCTYPE html>
+<html lang="PT-BR">
 
-  <body>
-    <%- include ('./templates/menu') %> 
+<head>
+  <meta charset='utf-8'>
+  <title>Portifolio</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='css/bootstrap.css'>
+  <link href="css/estilo.css" rel="stylesheet" type="text/css" media="screen" />
+  <link href="css/ac.css" rel="stylesheet" type="text/css" media="screen" />
+  <script src="js/high-contrast.js" type="text/javascript"></script>
+  <script src="js/fonte.js" type="text/javascript"></script>
+</head>
 
-    <main role="main">
-
-      <section class="jumbotron text-center">
-        <div class="container">
-          <h1>example</h1>
-          <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
-        
+<body>
+  <header>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+      <div class="container collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Portifolio</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Acessibilidade
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" onClick="fonte('a');">Aumentar Letras</a>
+              <a class="dropdown-item" onClick="fonte('d');">Diminuir Letras</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#altocontraste" id="altocontraste" accesskey="3"
+                onclick="window.toggleContrast()" onkeydown="window.toggleContrast()">Contraste</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <main role="main">
+    <article>
+      <section class="bgimg-3 w3-display-container w3-opacity-min" id="portfolio">
+        <div class="w3-display-middle">
+          <span class="w3-xxlarge w3-black w3-wide">PORTFOLIO DEMO</span>
         </div>
       </section>
+      <!--Portfolio Section) -->
+    </article>
+    <div class="container marketing">
 
-      <div class="album py-5 bg-white">
-        <div class="container">
-          <div class="row">
-          <% if (postagens) { %>
-            <% for(var i = 0; i < postagens.length; i++){ %>
-            <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                <img src="/static/img/<%= postagens[i].img %>">
-                   <div class="card-body">
-                  <p class="card-text"> <%= postagens[i].title %> </p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <a class="btn btn-sm btn-outline-secondary" href="/post/<%= postagens[i]._id %>" >Ver</a>
-                    </div>
-                    <small class="text-muted"><%= postagens[i].date %></small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <% } %>
-          <% } %>
-          </div>
+      <hr class="featurette-divider">
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">Design corporativo. <span class="text-muted">Indispensavel para sua
+              empresa.</span></h2>
+          <p class="lead">...</p>
+        </div>
+        <div class="row-sm-2 col-md-5">
+          <a href="https://www.w3schools.com/w3css/tryw3css_templates_architect.htm" target=”_blank”><img
+              src="img/projetoArch.png" class="w-100" alt="Responsive image"></a>
         </div>
       </div>
 
-    </main>
-    <%- include ('./templates/footer') %> 
-  </body>
+      <hr class="featurette-divider">
+      <div class="row featurette">
+        <div class="col-md-7 order-md-2">
+          <h2 class="featurette-heading">Seu proprio blog. <span class="text-muted">Promova sua marca.</span></h2>
+          <p class="lead">...</p>
+        </div>
+        <div class="col-md-5 order-md-1">
+          <a href="https://www.w3schools.com/w3css/tryw3css_templates_portfolio.htm" target=”_blank”><img
+              src="img/projetoFoto.png" class="w-100" alt="Responsive image"></a>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">Ecommerce. <span class="text-muted">Venda seus produtos.</span></h2>
+          <p class="lead">...</p>
+        </div>
+        <div class="col-md-5">
+          <a href="https://www.w3schools.com/w3css/tryw3css_templates_clothing_store.htm" target=”_blank”><img
+              src="img/projetoLoja.png" class="w-100" alt="Responsive image"></a>
+        </div>
+      </div>
+    </div>
+    <hr class="featurette-divider">
+    <footer class="container">
+      <p class="float-right"><a href="#">Inicio</a></p>
+      <p>&copy; Marco A S Azevedo - 2020.</p>
+    </footer>
+  </main>
+  <script src="js/jquery-3.4.1.js"></script>
+  <script src='js/bootstrap.js'></script>
+</body>
+
 </html>

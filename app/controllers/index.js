@@ -5,18 +5,25 @@ class IndexControll {
 
     static routs() {
         return {
-            home: '/'
+            home: '/',
+            blog: '/blog'
         };
     }
 
     home() {
         return function(req, resp) {
-            const postDao = new PostDAO(url); 
-            postDao.list()
-                .then(postagens => resp.render('./index',{postagens:postagens}))
-                .catch(error => console.log(error)); 
+            resp.render('./index',{postagens:postagens})  
         };
     }  
+
+    blog() {
+        return function(req, resp) {
+            const postDao = new PostDAO(url); 
+            postDao.list()
+                .then(postagens => resp.render('./blog',{postagens:postagens}))
+                .catch(error => console.log(error)); 
+        };
+    }
 
 }
 
