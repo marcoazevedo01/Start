@@ -5,7 +5,7 @@ exports.compressImage = (file, size) => {
     const newPath = file.path.split('.')[0] + '.webp';
 
     return sharp(file.path)
-        .resize(size)
+        .resize(size,size)
         .toFormat('webp')
         .webp({quality: 100})
         .toBuffer()

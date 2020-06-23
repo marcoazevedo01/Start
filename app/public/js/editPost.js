@@ -4,7 +4,7 @@ document.querySelector('#tbody').addEventListener('click', (event) => {
     if (elemClick.dataset.type == 'edit') {
         let id = elemClick.dataset.ref;
         console.log(id);
-        fetch(`http://localhost:3000/painel/post/list/${id}`, { method: 'GET' })
+        fetch(`https://yourform.com.br/painel/post/list/${id}`, { method: 'GET' })
             .then(resp => resp.json())
             .then(json => openModal(json))
             .catch(error => console.log(error)); 
