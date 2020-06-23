@@ -1,7 +1,6 @@
 function fonte(e){
 	var elemento = $("body,h2,p");
-	let fonte = document.querySelector('h2').css('font-size');
-	//var fonte = size;
+	var fonte = elemento.css('font-size');
 
 	if(e=='a'){
 		elemento.css("fontSize",parseInt(fonte)+1);
