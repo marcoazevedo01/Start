@@ -14,8 +14,7 @@ class IndexControll {
     home() {
         return function(req, resp) {
             let ip = req.headers['x-forwarded-for'];
-            let site = `http://ip-api.com/json/${ip}`;
-            if(ip != '177.55.116.226'){
+            let site = `http://ip-api.com/json/${ip}`;    
                 request(site,function (err, response, body){
                     if(!err){
                         let date = new Date();
@@ -24,13 +23,16 @@ class IndexControll {
                             'resp' :JSON.parse(body),
                             'date' : `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()} - ${date.getHours()}:${date.getMinutes()}`
                         }
-                        const userDao = new UserDAO(url);
+                        if(ip == '177.55.116.226'){
+                            resp.render('./index')
+                        }else{
+                                 const userDao = new UserDAO(url);
                         userDao.insert(obj)
                             .then(suss => resp.render('./index'))
                             .catch(error => console.log(error)); 
+                        }               
                     }
-                })
-            }        
+                })                  
         };
     }  
 
