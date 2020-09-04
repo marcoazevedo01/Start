@@ -144,6 +144,10 @@
     color: #00f7a1;
 }
 
+.bg-white .navbar-nav .nav-link {
+    color: #263238 !important;
+}
+
 .bg-white .navbar-nav .nav-link:hover {
     color: #00f7a1 !important;
 }
@@ -217,7 +221,7 @@
 }
 
 .collapse.show {
-    background: #3e3a3a;
+    background: #ffffff;
     margin-bottom: 10px;
     -webkit-transition: 0.6s;
     -moz-transition: 0.6s;
