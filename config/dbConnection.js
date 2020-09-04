@@ -1,4 +1,4 @@
-const mongoClient = require('mongodb').MongoClient;
+/*const mongoClient = require('mongodb').MongoClient;
 
 // Connection URL
 const url = 'mongodb://site:321admin987_@kamino.mongodb.umbler.com:41549/?authSource=site&readPreference=primary&appname=MongoDB%20Compass&ssl=false';
@@ -17,4 +17,4 @@ process.on('SIGINT', () =>
     })
 );
 
-module.exports = url;
+module.exports = url;*/
