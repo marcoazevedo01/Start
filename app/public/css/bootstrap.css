@@ -4457,7 +4457,7 @@ input[type="button"].btn-block {
     display: none;
   }
 }
-
+/* empurando btn colpse do nav para fora
 @media (max-width: 767.98px) {
   .navbar-expand-md > .container,
   .navbar-expand-md > .container-fluid, .navbar-expand-md > .container-sm, .navbar-expand-md > .container-md, .navbar-expand-md > .container-lg, .navbar-expand-md > .container-xl {
@@ -4465,6 +4465,7 @@ input[type="button"].btn-block {
     padding-left: 0;
   }
 }
+*/
 
 @media (min-width: 768px) {
   .navbar-expand-md {
