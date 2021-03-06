@@ -20,9 +20,6 @@ app.use('/static', express.static('./app/public'));
 app.set('view engine', 'ejs');
 app.set('views', './app/views');
 
-//const sessionAltentication = require('./altentication');
-//sessionAltentication(app);
-
 const routs = require('../app/routes/routs');
 routs(app);
 
